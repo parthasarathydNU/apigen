@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# React User Management Table
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates a simple React application implementing a user management table. It uses React components and `Context API` with a `reducer` for state management. The application is styled with Tailwind CSS and uses various components from Shadcn UI for a clean and modern user interface.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Display**: Displays attributes like ID, Name, Email, Role, Status, Sign Up Date, and Last Login in a table format.
+- **Edit User**: Users can edit any attribute using a modal dialog. State management is handled using React Context and useReducer.
+- **Delete User**: Users can be deleted directly from the table with immediate effect, also managed by React Context and useReducer.
+- **Design**: Styled using Tailwind CSS for layout and Shadcn UI components like buttons, dialogs, and tables for functionality and aesthetics.
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Wide Screen**
+![Wide Screen](screenshots/wideScreen.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Edit User**
+![Edit User](screenshots/editUser.png)
 
-### `npm test`
+**Delete User**
+![Delete User](screenshots/deleteUser.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- **ReactJS**: For building the user interface.
+- **Tailwind CSS**: For styling and layout.
+- **Shadcn UI**: Used for various UI components:
+  - `alert-dialog.tsx` for alerts
+  - `button.tsx` for buttons
+  - `dropdown-menu.tsx` for dropdown menus
+  - `input.tsx` for form inputs
+  - `label.tsx` for input labels
+  - `select.tsx` for select boxes
+  - `table.tsx` for the user table
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup and Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```
+   git clone https://github.com/parthasarathydNU/apigen.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd apigen
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   npm run start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+Once the development server is running, you can view the application in your browser at `http://localhost:3000`. The application will display a table of users, with options to edit or delete each user via the UI components.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT License](LICENSE.md)
