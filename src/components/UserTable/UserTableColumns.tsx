@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { User } from "../../api/types";
 import { DataTableColumnHeader } from "../DataTableHeader";
+import { UserTableRowActions } from "./UserTableRowActions";
 
 export const UserTableColumns: ColumnDef<User>[] = [
   {
@@ -110,5 +111,9 @@ export const UserTableColumns: ColumnDef<User>[] = [
         </div>
       );
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <UserTableRowActions row={row} />,
   },
 ];

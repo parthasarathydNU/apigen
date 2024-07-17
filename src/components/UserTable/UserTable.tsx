@@ -1,16 +1,13 @@
-import { getUserData } from 'src/api/hooks';
-import { User, userArraySchema } from 'src/api/types';
+import { getUserData } from "src/api/hooks";
+import { User, userArraySchema } from "src/api/types";
 
-import React, { useEffect, useState } from 'react'
-import { DataTable } from '../DataTable';
-import { UserTableColumns } from './UserTableColumns';
+import React, { useEffect, useState } from "react";
+import { DataTable } from "../DataTable";
+import { UserTableColumns } from "./UserTableColumns";
 
-interface UserTableProps {
-    
-}
+interface UserTableProps {}
 
-const UserTable : React.FC<UserTableProps> = () => {
-
+const UserTable: React.FC<UserTableProps> = () => {
   const [userData, setUserData] = useState<User[]>([]);
   /**
    * Ideal situation - use data hooks to use react-query to cache and
@@ -27,7 +24,11 @@ const UserTable : React.FC<UserTableProps> = () => {
       const data = getUserData();
 
       // validate data
-      const { data: userData, error, success } = userArraySchema.safeParse(data);
+      const {
+        data: userData,
+        error,
+        success,
+      } = userArraySchema.safeParse(data);
 
       if (error) {
         console.log("Error in fetching user data ", error);
@@ -35,7 +36,7 @@ const UserTable : React.FC<UserTableProps> = () => {
 
       if (success && userData) {
         if (!ignore) {
-          console.log("Setting user data")
+          console.log("Setting user data");
           setUserData(userData);
         }
       }
@@ -44,14 +45,16 @@ const UserTable : React.FC<UserTableProps> = () => {
     fetchData();
 
     return () => {
-      console.log("Ignoring data fetch")
+      console.log("Ignoring data fetch");
       ignore = true;
     };
   }, []);
-    
-  return (
-    <DataTable columns={UserTableColumns} data={userData} />
-  )
-}
 
-export default UserTable
+  return (
+    <div className="max-w-screen w-[80vw]">
+      <DataTable columns={UserTableColumns} data={userData} />
+    </div>
+  );
+};
+
+export default UserTable;
