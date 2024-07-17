@@ -6,8 +6,8 @@ const Role = z.enum(["User", "Manager", "Admin"]);
 const Status = z.enum(["Active", "Inactive", "Pending"]);
 
 export const userSchema = z.object({
-    id: z.number(),
-    name: z.string(),
+    id: z.number().min(1),
+    name: z.string().min(5, { message: "Must be 5 or more characters long" }),
     email: z.string().email(),
     role: Role,
     status: Status,

@@ -45,7 +45,3 @@ export const useUserData = () => {
       apiRequest<any[]>({ method: "get", url: "user_data" })
     );
   };
-
-export const getUserData = () : User[] => {
-    return userData as User[];
-}

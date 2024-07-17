@@ -21,7 +21,7 @@ import {
 } from "../ui/select";
 
 import { Edit } from "lucide-react";
-import { StatusOptions, User, UserRoleOptions } from "src/api/types";
+import { StatusOptions, User, UserRoleOptions, userSchema } from "src/api/types";
 import { UserActionTypes } from "src/state/userReducer";
 import { UserTableDispatchContext } from "./UserTableContext";
 import { Label } from "../ui/label";
@@ -37,16 +37,34 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
 
   const [updatedUser, setUpdatedUser] = useState(user);
 
+  const [submitDisabled, setSubmitDisabled] = useState(true);
+
   const handleUserDetailsChanged = (
     e: ChangeEvent<HTMLInputElement>,
     key: string
   ) => {
+
     const newUser = {
       ...updatedUser,
       [key]: e.target.value,
     };
 
+    // Validate if input is of correct type
+    const validated = userSchema.safeParse(newUser);
+
+    if(validated.success){
+      setSubmitDisabled(false);
+    }
+
+    if(validated.error){
+      console.log(validated.error);
+      setSubmitDisabled(true);
+    }
+
     setUpdatedUser(newUser);
+    
+
+    
   };
 
   const handleOptionsChanged = (newOption: string, field: string) => {
@@ -55,8 +73,39 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
       [field]: newOption,
     };
 
-    setUpdatedUser(newUser);
+    // Validate if input is of correct type
+    const validated = userSchema.safeParse(newUser);
+
+    if(validated.success){
+      setUpdatedUser(newUser);
+      setSubmitDisabled(false);
+    }
+
+    if(validated.error){
+      console.log(validated.error);
+      setSubmitDisabled(true);
+    }
+
+    
   };
+
+  const handleUserUpdate = () => {
+
+    // Validate if input is of correct type
+    const validated = userSchema.safeParse(updatedUser);
+
+    if(validated.error){
+      console.log(validated.error);
+    }
+
+    if(validated.success){
+      dispatch({
+        type: UserActionTypes.CHANGED,
+        payload: validated.data,
+      });
+    }
+
+  }
 
   return (
     <AlertDialog>
@@ -157,12 +206,8 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => {
-              dispatch({
-                type: UserActionTypes.CHANGED,
-                payload: updatedUser,
-              });
-            }}
+          disabled={submitDisabled}
+            onClick={handleUserUpdate}
           >
             Save
           </AlertDialogAction>
