@@ -1,5 +1,7 @@
 import z from 'zod';
 
+export const StatusOptions = ["Active", "Inactive", "Pending"];
+export const UserRoleOptions = ["User", "Manager", "Admin"];
 const Role = z.enum(["User", "Manager", "Admin"]);
 const Status = z.enum(["Active", "Inactive", "Pending"]);
 

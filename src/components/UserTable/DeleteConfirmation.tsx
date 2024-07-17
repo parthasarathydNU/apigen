@@ -27,7 +27,7 @@ const DeleteConfirmation : React.FC<DeleteConfirmationProps> = ({user})  => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger><Trash size={"20"}  /></AlertDialogTrigger>
+      <AlertDialogTrigger ><Trash size={"20"}  /></AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

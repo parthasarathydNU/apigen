@@ -6,8 +6,8 @@ import { Button } from "../ui/button";
 
 import { userSchema } from "src/api/types";
 import DeleteConfirmation from "./DeleteConfirmation";
-import { useState } from "react";
 import { Edit } from "lucide-react";
+import EditRowDialog from "./EditRowDialog";
 
 interface UserTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -23,7 +23,8 @@ export function UserTableRowActions<TData>({
   return (
     <div className="flex">
       <Button variant={"ghost"} size="sm">
-        <Edit size={"20"} />
+        
+        <EditRowDialog user={user}/>
       </Button>
       <Button variant={"ghost"} size="sm">
         <DeleteConfirmation user={user} />
