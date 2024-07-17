@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { DataTable } from "../DataTable";
+import { DataTable } from "../ui/data-table/DataTable";
 import { UserTableColumns } from "./UserTableColumns";
 import {
   initialUserState,

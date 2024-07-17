@@ -23,9 +23,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table"
-
-// import { DataTablePagination } from "./data-table-pagination"
+} from "../table"
+import { DataTablePagination } from "./DataTablePagination"
 // import { DataTableToolbar } from "./data-table-toolbar"
 
 interface DataTableProps<TData, TValue> {
@@ -67,6 +66,7 @@ export function DataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
 
+
   return (
     <div className="space-y-4 overflow-auto">
       {/* <DataTableToolbar table={table} /> */}
@@ -91,8 +91,8 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+            {table.getPaginationRowModel().rows?.length ? (
+              table.getPaginationRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
@@ -120,7 +120,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      {/* <DataTablePagination table={table} /> */}
+      <DataTablePagination table={table} />
     </div>
   )
 }
