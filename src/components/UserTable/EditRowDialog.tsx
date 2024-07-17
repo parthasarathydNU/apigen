@@ -76,7 +76,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                 Name
               </Label>
               <Input
-                className="w-[75%] max-w-[55vw]"
+                className="w-[75%] min-w-[60%] max-w-[55vw]"
                 value={updatedUser.name}
                 onChange={(e) => handleUserDetailsChanged(e, "name")}
               />
@@ -86,7 +86,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                 Email
               </Label>
               <Input
-                className="w-[75%] max-w-[55vw]"
+                className="w-[75%] min-w-[60%] max-w-[55vw]"
                 value={updatedUser.email}
                 onChange={(e) => handleUserDetailsChanged(e, "email")}
               />
@@ -101,7 +101,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                   handleOptionsChanged(newRole, "role")
                 }
               >
-                <SelectTrigger className="w-[75%] max-w-[55vw]">
+                <SelectTrigger className="w-[75%] min-w-[60%] max-w-[55vw]">
                   <SelectValue placeholder={updatedUser.role} />
                 </SelectTrigger>
                 <SelectContent>
@@ -120,7 +120,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                   handleOptionsChanged(newStatus, "status")
                 }
               >
-                <SelectTrigger className="w-[75%] max-w-[55vw]">
+                <SelectTrigger className="w-[75%] min-w-[60%] max-w-[55vw]">
                   <SelectValue placeholder={updatedUser.status} />
                 </SelectTrigger>
                 <SelectContent>
@@ -136,7 +136,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
               </Label>
               <Input
                 type={"date"}
-                className="w-[75%] max-w-[55vw]"
+                className="w-[75%] min-w-[60%] max-w-[55vw]"
                 value={updatedUser.signUpDate}
                 onChange={(e) => handleUserDetailsChanged(e, "signUpDate")}
               />
@@ -147,7 +147,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
               </Label>
               <Input
                 type={"date"}
-                className="w-[75%] max-w-[55vw]"
+                className="w-[75%] min-w-[60%] max-w-[55vw]"
                 value={updatedUser.lastLogin}
                 onChange={(e) => handleUserDetailsChanged(e, "lastLogin")}
               />
