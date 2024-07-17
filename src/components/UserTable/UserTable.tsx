@@ -13,7 +13,7 @@ const UserTable: React.FC<UserTableProps> = () => {
   const [userData, dispatch] = useReducer(userReducer, initialUserState);
 
   return (
-    <div className="max-w-screen w-[80vw]">
+    <div className="max-w-screen w-[90vw]">
       <UserTableContext.Provider value={userData}>
         <UserTableDispatchContext.Provider value={dispatch}>
           <DataTable columns={UserTableColumns} data={userData} />
