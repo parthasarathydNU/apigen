@@ -17,6 +17,8 @@ import { User } from "src/api/types";
 import { UserActionTypes } from "src/state/userReducer";
 import { UserTableDispatchContext } from "./UserTableContext";
 import { Button } from "../ui/button";
+import { toast } from "sonner";
+import { format } from "date-fns";
 
 interface DeleteConfirmationProps {
   user: User;
@@ -46,6 +48,9 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({ user }) => {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
+              toast(`User ${user.name} Deleted`, {
+                description: `Deleted now ${format(new Date(), "p")}`,
+              });
               dispatch({
                 type: UserActionTypes.DELETED,
                 payload: user,
