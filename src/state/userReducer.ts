@@ -1,8 +1,9 @@
 import { User } from "src/api/types";
+import userData from "../api/sample_data.json"
 
 export const i = 10;
 
-export const initialUserState : User[] = [];
+export const initialUserState : User[] = userData as User[];
 
 export enum UserActionTypes {
   ADDED,
@@ -22,10 +23,12 @@ export function userReducer(users: any, action: UserAction) {
         return []
     }
     case UserActionTypes.ADDED: {
+        console.log("user addded");
       const newUser = action.payload;
       return [...users, newUser];
     }
     case UserActionTypes.CHANGED: {
+        console.log("user changed");
       return users.map((u:User) => {
         if (u.id === action.payload?.id) {
           return action.payload;
@@ -35,7 +38,10 @@ export function userReducer(users: any, action: UserAction) {
       });
     }
     case UserActionTypes.DELETED: {
-      return users.filter((u:User) => u.id !== action.payload?.id);
+        console.log("user deleted");
+      const newUsers =  users.filter((u:User) => u.id !== action.payload?.id);
+      console.log(newUsers);
+      return newUsers;
     }
     default: {
       throw Error("Unknown action: " + action.type);
