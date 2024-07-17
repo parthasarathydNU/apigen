@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 
 import {
   AlertDialog,
@@ -15,19 +15,25 @@ import {
 import { Trash } from "lucide-react";
 import { User } from "src/api/types";
 import { UserActionTypes } from "src/state/userReducer";
-import { UserTableDispatchContext } from './UserTableContext';
+import { UserTableDispatchContext } from "./UserTableContext";
+import { Button } from "../ui/button";
 
 interface DeleteConfirmationProps {
-    user : User
+  user: User;
 }
 
-const DeleteConfirmation : React.FC<DeleteConfirmationProps> = ({user})  => {
-
-    const dispatch = useContext(UserTableDispatchContext);
+const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({ user }) => {
+  const dispatch = useContext(UserTableDispatchContext);
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger ><Trash size={"20"}  /></AlertDialogTrigger>
+      <AlertDialogTrigger>
+        {" "}
+        <Button variant={"ghost"} size={"sm"}>
+          {" "}
+          <Trash size={"20"} />
+        </Button>
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -38,16 +44,20 @@ const DeleteConfirmation : React.FC<DeleteConfirmationProps> = ({user})  => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => {
-            dispatch({
-                type:UserActionTypes.DELETED,
-                payload: user
-            })
-          }}>Delete</AlertDialogAction>
+          <AlertDialogAction
+            onClick={() => {
+              dispatch({
+                type: UserActionTypes.DELETED,
+                payload: user,
+              });
+            }}
+          >
+            Delete
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
-}
+};
 
 export default DeleteConfirmation;

@@ -2,11 +2,9 @@
 
 import { Row } from "@tanstack/react-table";
 
-import { Button } from "../ui/button";
 
 import { userSchema } from "src/api/types";
 import DeleteConfirmation from "./DeleteConfirmation";
-import { Edit } from "lucide-react";
 import EditRowDialog from "./EditRowDialog";
 
 interface UserTableRowActionsProps<TData> {
@@ -22,13 +20,13 @@ export function UserTableRowActions<TData>({
 
   return (
     <div className="flex">
-      <Button variant={"ghost"} size="sm">
+
         
         <EditRowDialog user={user}/>
-      </Button>
-      <Button variant={"ghost"} size="sm">
+
+
         <DeleteConfirmation user={user} />
-      </Button>
+
     </div>
   );
 }

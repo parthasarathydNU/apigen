@@ -26,6 +26,7 @@ import { UserActionTypes } from "src/state/userReducer";
 import { UserTableDispatchContext } from "./UserTableContext";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 interface EditRowDialogProps {
   user: User;
@@ -60,7 +61,9 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Edit size={"20"} />
+        <Button variant={"ghost"} size={"sm"}>
+          <Edit size={"20"} />
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -103,7 +106,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                 </SelectTrigger>
                 <SelectContent>
                   {UserRoleOptions.map((role) => (
-                    <SelectItem value={role} >{role}</SelectItem>
+                    <SelectItem key={role} value={role}>{role}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -122,7 +125,7 @@ const EditRowDialog: React.FC<EditRowDialogProps> = ({ user }) => {
                 </SelectTrigger>
                 <SelectContent>
                   {StatusOptions.map((status) => (
-                    <SelectItem value={status}>{status}</SelectItem>
+                    <SelectItem key={status} value={status}>{status}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
