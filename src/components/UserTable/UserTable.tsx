@@ -1,14 +1,17 @@
 import { getUserData } from "src/api/hooks";
 import { User, userArraySchema } from "src/api/types";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { DataTable } from "../DataTable";
 import { UserTableColumns } from "./UserTableColumns";
+import { initialUserState, UserActionTypes, userReducer } from "src/state/userReducer";
 
 interface UserTableProps {}
 
 const UserTable: React.FC<UserTableProps> = () => {
-  const [userData, setUserData] = useState<User[]>([]);
+
+  const [userData, dispatch] = useReducer(userReducer, initialUserState);
+  
   /**
    * Ideal situation - use data hooks to use react-query to cache and
    * invalidate data fetches
@@ -18,7 +21,11 @@ const UserTable: React.FC<UserTableProps> = () => {
   // Run this side effect after initial render
   useEffect(() => {
     let ignore = false;
-    setUserData([]);
+
+    dispatch({
+      type: UserActionTypes.CLEAR_USERS,
+      payload: undefined
+    })
 
     const fetchData = async () => {
       const data = getUserData();
@@ -37,7 +44,13 @@ const UserTable: React.FC<UserTableProps> = () => {
       if (success && userData) {
         if (!ignore) {
           console.log("Setting user data");
-          setUserData(userData);
+          
+          userData.forEach(user => {
+            dispatch({
+              type: UserActionTypes.ADDED,
+              payload: user
+            })
+          })
         }
       }
     };

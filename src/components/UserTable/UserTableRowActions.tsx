@@ -10,8 +10,6 @@ import {
   DropdownMenuItem,
 
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
 
@@ -41,12 +39,10 @@ export function UserTableRowActions<TData>({
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem>Edit</DropdownMenuItem>
         <DropdownMenuItem>Make a copy</DropdownMenuItem>
-        <DropdownMenuItem>Favorite</DropdownMenuItem>
         <DropdownMenuSeparator />
 
         <DropdownMenuItem>
           Delete
-          <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

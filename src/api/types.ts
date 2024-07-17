@@ -17,3 +17,4 @@ export const userSchema = z.object({
 export const userArraySchema = z.array(userSchema);
   
 export type User = z.infer<typeof userSchema>
+export type UserPartial = z.infer<typeof userSchema>
